@@ -21,24 +21,26 @@ public class Maison {
 	 */
 	public void ajouterPiece(Piece nvPiece) {
 		if(nvPiece != null) {
-			// On est obligé d'agrandir le tableau initial de 1 à chaque ajout
-			// d'une nouvelle pièce
-			
-			// On commence donc par créer un tableau temporaire appelé newTab
-			// qui a une taille égale à la tableau du tableau pieces+1
-			Piece[] newTab = new Piece[pieces.length+1];
-			
-			// On déverse toutes les pièces du tableau pieces dans newTab
-			for (int i=0; i<pieces.length; i++){
-				newTab[i]=pieces[i];
+			if(nvPiece.getSuperficie() >= 0) {
+				// On est obligé d'agrandir le tableau initial de 1 à chaque ajout
+				// d'une nouvelle pièce
+				
+				// On commence donc par créer un tableau temporaire appelé newTab
+				// qui a une taille égale à la tableau du tableau pieces+1
+				Piece[] newTab = new Piece[pieces.length+1];
+				
+				// On déverse toutes les pièces du tableau pieces dans newTab
+				for (int i=0; i<pieces.length; i++){
+					newTab[i]=pieces[i];
+				}
+				
+				// On place en dernière position dans le nouveau tableau la nouvelle
+				// pièce
+				newTab[newTab.length-1]=nvPiece;
+				
+				// Enfin on affecte newTab à pieces
+				this.pieces=newTab;
 			}
-			
-			// On place en dernière position dans le nouveau tableau la nouvelle
-			// pièce
-			newTab[newTab.length-1]=nvPiece;
-			
-			// Enfin on affecte newTab à pieces
-			this.pieces=newTab;
 		}
 	}
 	
@@ -55,7 +57,7 @@ public class Maison {
 
 		for (int i = 0; i < pieces.length; i++) {
 			if (choixEtage == this.pieces[i].getNumEtage()) {
-				superficieEtage = this.pieces[i].getSuperficie();
+				superficieEtage += this.pieces[i].getSuperficie();
 			}
 		}
 

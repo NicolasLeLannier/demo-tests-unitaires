@@ -38,5 +38,15 @@ public class StringUtilsTest {
         assertEquals(3, StringUtils.levenshteinDistance("abc", null));
         assertEquals(0, StringUtils.levenshteinDistance(null, null));
     }
+    
+    @Test
+    public void testLevenshteinDistanceWithSpace() {
+        assertEquals(1, StringUtils.levenshteinDistance("  avc   ", "abc"));
+    }
+    
+    @Test
+    public void testLevenshteinDistanceWithCaps() {
+        assertEquals(0, StringUtils.levenshteinDistance("aBc", "abc"));
+    }
 
 }

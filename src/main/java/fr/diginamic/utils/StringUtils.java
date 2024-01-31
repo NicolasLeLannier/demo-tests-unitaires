@@ -14,13 +14,17 @@ public final class StringUtils {
 	 * @param rhs chaine 2
 	 * @return distance
 	 */
-	public static int levenshteinDistance(CharSequence lhs, CharSequence rhs) {
+	public static int levenshteinDistance(String lhs, String rhs) {
 		if (lhs == null) {
 	        lhs = "";
+	    } else {
+	    	lhs = lhs.toLowerCase().trim();
 	    }
 
 	    if (rhs == null) {
 	        rhs = "";
+	    } else {
+	    	rhs = rhs.toLowerCase().trim();
 	    }
 	    
 		int len0 = lhs.length() + 1;
